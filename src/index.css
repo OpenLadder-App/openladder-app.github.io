@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-industrial-950: var(--bg-950);
+  --color-industrial-900: var(--bg-900);
+  --color-industrial-800: var(--bg-800);
+  --color-accent: var(--accent);
+  --color-energized: var(--energized);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border-primary: var(--border-primary);
+}
+
+:root {
+  /* Dark Theme (Default - Industrial Blue) */
+  --bg-950: #0b1120;
+  --bg-900: #111827;
+  --bg-800: #1f2937;
+  --accent: #38bdf8;
+  --energized: #facc15;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --border-primary: #1f2937;
+}
+
+.light {
+  /* Light Theme */
+  --bg-950: #f9fafb;
+  --bg-900: #ffffff;
+  --bg-800: #f3f4f6;
+  --accent: #0e7490;
+  --energized: #ef4444;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --border-primary: #e5e7eb;
+}
+
+@layer base {
+  body {
+    @apply bg-industrial-950 text-text-primary antialiased transition-colors duration-300;
+  }
+}
