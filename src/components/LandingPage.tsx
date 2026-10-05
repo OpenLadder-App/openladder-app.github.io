@@ -15,7 +15,10 @@ import {
   ChevronRight,
   Zap,
   Sun,
-  Moon
+  Moon,
+  BookOpen,
+  FileText,
+  Languages
 } from "lucide-react";
 import React, { useState, useEffect, useRef } from "react";
 import { Logo } from "./Logo";
@@ -29,89 +32,95 @@ const translations = {
   en: {
     nav: {
       features: "Features",
-      showcase: "Showcase",
+      showcase: "Try it",
       howItWorks: "How it Works",
       roadmap: "Roadmap",
-      startDesigning: "Start Designing"
+      startDesigning: "Open the Editor"
     },
     hero: {
-      title: "Modern PLC Ladder Logic",
-      subtitle: "Editor & Simulator",
-      description: "Design, simulate, and document your industrial automation projects with an intuitive, web-based platform. No proprietary software required.",
-      ctaStart: "Start Designing Now",
-      ctaExamples: "Explore Examples"
+      title: "Learn and practice Ladder Logic",
+      subtitle: "right in your browser",
+      description: "A free PLC Ladder Logic editor and simulator. Nothing to install and no vendor license: open it, build your rungs and watch the logic run.",
+      ctaStart: "Open the Editor",
+      ctaExamples: "Read the Docs"
     },
     features: {
-      badge: "Engineered for Performance",
-      description: "Everything you need to build industrial-grade logic in your browser.",
+      badge: "What you can do today",
+      description: "A complete practice environment for PLC logic, built by an automation engineer for people learning the trade.",
       items: [
-        { title: "Visual Editor", desc: "Drag-and-drop instructions with real-time feedback and automatic rung validation." },
-        { title: "PLC Simulator", desc: "Test your logic instantly with a built-in engine. No hardware required." },
-        { title: "Function Blocks", desc: "Modularize your code for better maintainability and reuse across projects." },
-        { title: "Git Integration", desc: "Seamless version control for your automation projects directly with GitHub." },
-        { title: "Multi-Theme", desc: "Choose between Dark, Light, or Industrial Blue themes for your environment." }
+        { title: "Visual Ladder editor", desc: "Build rungs with contacts, coils, latches, one-shots, timers, counters, comparisons and math. 35 instructions, named in the Rockwell style you find in the field." },
+        { title: "Built-in simulator", desc: "Run the logic instantly and see which paths are energized. No PLC required." },
+        { title: "Real program structure", desc: "Continuous and periodic tasks, routines, subroutine calls and reusable function blocks." },
+        { title: "Your projects stay with you", desc: "Everything runs in your browser. Projects are saved locally and can be exported and imported as JSON or XML. Git and Google Drive integrations are in progress." },
+        { title: "Document as you build", desc: "Rung comments and Markdown documentation pages live inside the project, next to the logic they describe." },
+        { title: "English and Portuguese", desc: "Bilingual interface, with Dark, Light and Industrial Blue themes." }
       ]
     },
     showcase: {
-      title: "See it in Action",
-      description: "Explore the powerful features that make OpenLadder the preferred choice for modern automation.",
+      title: "Try it right here",
+      description: "These are live editors, not videos. Click the variables to change their values and watch the rung react.",
       demos: [
-        { title: "Interactive Editor", desc: "Experience the intuitive ladder logic editor directly in your browser." },
-        { title: "Motor Control Demo", desc: "A pre-configured Start/Stop logic to demonstrate real-time simulation capabilities." }
+        { title: "Blank editor", desc: "An empty routine to try your own logic." },
+        { title: "Motor start/stop", desc: "A classic seal-in circuit, ready to simulate." }
       ]
     },
     howItWorks: {
-      title: "From Concept to",
-      subtitle: "Deployment",
-      badge: "Optimized for Industrial Environments",
+      title: "From first rung to",
+      subtitle: "tested logic",
+      badge: "For study and prototyping. It does not control real equipment.",
+      diagramLabel: "Motor start/stop with seal-in",
       steps: [
-        { title: "Create or Import", desc: "Start a new project or import an existing one from GitHub." },
-        { title: "Design Logic", desc: "Use the intuitive editor to build your rungs and tags." },
-        { title: "Simulate & Test", desc: "Run the built-in PLC simulator to verify your logic." },
-        { title: "Document & Deploy", desc: "Add documentation and export your project for deployment." }
+        { title: "Open the editor", desc: "No account and no installation. Start from scratch or from a sample: motor control, tank filling or traffic light." },
+        { title: "Declare your variables", desc: "Create the tags your logic needs: bits, numbers, timers and counters." },
+        { title: "Build and simulate", desc: "Assemble the rungs and run the simulator to check the behavior scan by scan." },
+        { title: "Export and share", desc: "Save the project as JSON or XML to keep it, hand it in or continue on another computer." }
       ]
     },
     cta: {
-      title: "Ready to build the future of automation?",
-      start: "Start Designing Now",
-      repos: "View Repositories"
+      title: "Ready to practice Ladder Logic?",
+      start: "Open the Editor",
+      repos: "Read the Docs"
     },
     footer: {
-      tagline: "Modernizing industrial automation with open, web-based tools for the next generation of engineers.",
+      tagline: "A free Ladder Logic editor and simulator for people learning industrial automation.",
       product: "Product",
       resources: "Resources",
-      legal: "Legal",
+      simulator: "Simulator",
+      docs: "Documentation",
+      instructions: "Instruction reference",
       builtWith: "Built with",
-      forEngineers: "for Engineers",
+      forEngineers: "for the people who keep plants running",
       rights: "All rights reserved."
     },
     roadmap: {
-      title: "Product Roadmap",
-      subtitle: "The Future of OpenLadder",
+      title: "Roadmap",
+      subtitle: "Where OpenLadder is and where it is going",
+      phaseLabel: "Phase",
+      scopeLabel: "Scope",
       phases: [
-        { 
-          title: "Core Stability", 
-          status: "Completed", 
-          desc: "Focus on editor performance and basic instruction set.",
-          details: "Achieved sub-10ms latency for rung updates, implemented standard NO/NC contacts and coils, and optimized the simulation engine for low-end devices."
+        {
+          title: "Editor and simulator",
+          status: "Available",
+          desc: "The foundation is online and free to use.",
+          details: "Visual editor with 35 instructions, simulator, tasks and routines, function blocks, JSON and XML export, bilingual interface, and an embedded version of the editor for tutorials."
         },
-        { 
-          title: "Advanced Simulation", 
-          status: "In Progress", 
-          desc: "Real-time monitoring and complex data type support.",
-          details: "Currently developing support for Timers (TON/TOF), Counters (CTU/CTD), and floating-point math instructions. Implementing a live data watch window."
+        {
+          title: "ControlLogix equivalence",
+          status: "In progress",
+          desc: "Behave like the controllers people actually meet at work.",
+          details: "Reach a minimum equivalence with Rockwell ControlLogix: fill the gaps in the instruction set, align timer and counter behavior, and cover everything with automated tests."
         },
-        { 
-          title: "Collaboration", 
-          status: "Planned", 
-          desc: "Multi-user editing and advanced Git workflows.",
-          details: "Future support for real-time collaborative editing (CRDT-based), project sharing via unique URLs, and deeper GitHub Actions integration for automated testing."
+        {
+          title: "Other manufacturers",
+          status: "Planned",
+          desc: "One tool to learn across brands.",
+          details: "A compatibility table mapping each instruction to its equivalents from other manufacturers, followed by controller types inside the app, moving step by step toward international standards."
         },
-        { 
-          title: "Hardware Integration", 
-          status: "Future", 
-          desc: "Direct deployment to physical PLCs and industrial protocols.",
-          details: "Researching EtherNet/IP and Modbus TCP drivers for direct communication with physical hardware. Goal is to export compiled logic to industry-standard formats."
+        {
+          title: "Open source and tutorials",
+          status: "Planned",
+          desc: "Open the code and teach with it.",
+          details: "Publish the source code once the project reaches a stable version, along with step-by-step tutorials and videos built on the samples."
         }
       ]
     }
@@ -119,94 +128,135 @@ const translations = {
   pt: {
     nav: {
       features: "Recursos",
-      showcase: "Demonstração",
+      showcase: "Experimente",
       howItWorks: "Como Funciona",
       roadmap: "Roadmap",
-      startDesigning: "Começar Projeto"
+      startDesigning: "Abrir o Editor"
     },
     hero: {
-      title: "Lógica Ladder para CLP Moderna",
-      subtitle: "Editor e Simulador",
-      description: "Projete, simule e documente seus projetos de automação industrial com uma plataforma intuitiva baseada na web. Sem necessidade de software proprietário.",
-      ctaStart: "Começar a Projetar Agora",
-      ctaExamples: "Explorar Exemplos"
+      title: "Aprenda e pratique lógica Ladder",
+      subtitle: "direto no navegador",
+      description: "Editor e simulador de lógica Ladder para CLP, gratuito. Sem instalação e sem licença de fabricante: abra, monte suas linhas e veja a lógica funcionando.",
+      ctaStart: "Abrir o Editor",
+      ctaExamples: "Ler a Documentação"
     },
     features: {
-      badge: "Projetado para Performance",
-      description: "Tudo o que você precisa para construir lógica de nível industrial no seu navegador.",
+      badge: "O que você já pode fazer",
+      description: "Um ambiente completo para praticar lógica de CLP, feito por um engenheiro de automação para quem está aprendendo a profissão.",
       items: [
-        { title: "Editor Visual", desc: "Instruções arraste-e-solte com feedback em tempo real e validação automática de rungs." },
-        { title: "Simulador de CLP", desc: "Teste sua lógica instantaneamente com um motor integrado. Sem necessidade de hardware." },
-        { title: "Blocos de Função", desc: "Modularize seu código para melhor manutenção e reutilização em projetos." },
-        { title: "Integração com Git", desc: "Controle de versão contínuo para seus projetos de automação diretamente com o GitHub." },
-        { title: "Multi-Tema", desc: "Escolha entre os temas Escuro, Claro ou Azul Industrial para o seu ambiente." }
+        { title: "Editor visual de Ladder", desc: "Monte linhas com contatos, bobinas, retenção, one-shots, temporizadores, contadores, comparações e matemática. São 35 instruções, com os nomes no estilo Rockwell que você encontra em campo." },
+        { title: "Simulador embutido", desc: "Rode a lógica na hora e veja quais trechos estão energizados. Não precisa de CLP." },
+        { title: "Estrutura de programa real", desc: "Tarefas contínuas e periódicas, rotinas, chamadas de sub-rotina e blocos de função reutilizáveis." },
+        { title: "Seus projetos ficam com você", desc: "Tudo roda no seu navegador. Os projetos são salvos localmente e podem ser exportados e importados em JSON ou XML. Integrações com Git e Google Drive estão em desenvolvimento." },
+        { title: "Documente enquanto constrói", desc: "Comentários de linha e páginas de documentação em Markdown ficam dentro do projeto, ao lado da lógica que descrevem." },
+        { title: "Português e inglês", desc: "Interface bilíngue, com temas Escuro, Claro e Azul Industrial." }
       ]
     },
     showcase: {
-      title: "Veja em Ação",
-      description: "Explore os recursos poderosos que tornam o OpenLadder a escolha preferida para a automação moderna.",
+      title: "Experimente aqui mesmo",
+      description: "São editores de verdade, não vídeos. Clique nas variáveis para mudar os valores e veja a linha reagir.",
       demos: [
-        { title: "Editor Interativo", desc: "Experimente o editor de lógica ladder intuitivo diretamente no seu navegador." },
-        { title: "Demo de Controle de Motor", desc: "Uma lógica de Partida/Parada pré-configurada para demonstrar capacidades de simulação em tempo real." }
+        { title: "Editor em branco", desc: "Uma rotina vazia para testar a sua própria lógica." },
+        { title: "Partida e parada de motor", desc: "O clássico circuito com selo, pronto para simular." }
       ]
     },
     howItWorks: {
-      title: "Do Conceito à",
-      subtitle: "Implementação",
-      badge: "Otimizado para Ambientes Industriais",
+      title: "Da primeira linha à",
+      subtitle: "lógica testada",
+      badge: "Para estudo e prototipagem. Não comanda equipamentos reais.",
+      diagramLabel: "Partida e parada de motor com selo",
       steps: [
-        { title: "Criar ou Importar", desc: "Inicie um novo projeto ou importe um existente do GitHub." },
-        { title: "Projetar Lógica", desc: "Use o editor intuitivo para construir seus rungs e tags." },
-        { title: "Simular e Testar", desc: "Execute o simulador de CLP integrado para verificar sua lógica." },
-        { title: "Documentar e Implementar", desc: "Adicione documentação e exporte seu projeto para implementação." }
+        { title: "Abra o editor", desc: "Sem cadastro e sem instalação. Comece do zero ou de um exemplo: partida de motor, enchimento de tanque ou semáforo." },
+        { title: "Declare as variáveis", desc: "Crie as tags que a lógica precisa: bits, números, temporizadores e contadores." },
+        { title: "Monte e simule", desc: "Construa as linhas e rode o simulador para conferir o comportamento, varredura a varredura." },
+        { title: "Exporte e compartilhe", desc: "Salve o projeto em JSON ou XML para guardar, entregar ou continuar em outro computador." }
       ]
     },
     cta: {
-      title: "Pronto para construir o futuro da automação?",
-      start: "Começar a Projetar Agora",
-      repos: "Ver Repositórios"
+      title: "Pronto para praticar lógica Ladder?",
+      start: "Abrir o Editor",
+      repos: "Ler a Documentação"
     },
     footer: {
-      tagline: "Modernizando a automação industrial com ferramentas abertas baseadas na web para a próxima geração de engenheiros.",
+      tagline: "Editor e simulador de lógica Ladder gratuito, para quem está aprendendo automação industrial.",
       product: "Produto",
       resources: "Recursos",
-      legal: "Legal",
-      builtWith: "Construído com",
-      forEngineers: "para Engenheiros",
+      simulator: "Simulador",
+      docs: "Documentação",
+      instructions: "Referência de instruções",
+      builtWith: "Feito com",
+      forEngineers: "para quem mantém a planta rodando",
       rights: "Todos os direitos reservados."
     },
     roadmap: {
-      title: "Roadmap do Produto",
-      subtitle: "O Futuro do OpenLadder",
+      title: "Roadmap",
+      subtitle: "Onde o OpenLadder está e para onde vai",
+      phaseLabel: "Fase",
+      scopeLabel: "Escopo",
       phases: [
-        { 
-          title: "Estabilidade Principal", 
-          status: "Concluído", 
-          desc: "Foco em performance do editor e conjunto básico de instruções.",
-          details: "Alcançada latência inferior a 10ms para atualizações de rungs, implementados contatos e bobinas NA/NF padrão, e motor de simulação otimizado para dispositivos de baixo desempenho."
+        {
+          title: "Editor e simulador",
+          status: "Disponível",
+          desc: "A base está no ar e é gratuita.",
+          details: "Editor visual com 35 instruções, simulador, tarefas e rotinas, blocos de função, exportação em JSON e XML, interface bilíngue e uma versão embutida do editor para tutoriais."
         },
-        { 
-          title: "Simulação Avançada", 
-          status: "Em Progresso", 
-          desc: "Monitoramento em tempo real e suporte a tipos de dados complexos.",
-          details: "Atualmente desenvolvendo suporte para Temporizadores (TON/TOF), Contadores (CTU/CTD) e instruções matemáticas de ponto flutuante. Implementando janela de monitoramento de dados ao vivo."
+        {
+          title: "Equivalência com ControlLogix",
+          status: "Em andamento",
+          desc: "Comportar-se como os controladores que se encontra no trabalho.",
+          details: "Atingir uma equivalência mínima com o Rockwell ControlLogix: completar o conjunto de instruções, alinhar o comportamento de temporizadores e contadores e cobrir tudo com testes automáticos."
         },
-        { 
-          title: "Colaboração", 
-          status: "Planejado", 
-          desc: "Edição multiusuário e fluxos avançados de Git.",
-          details: "Suporte futuro para edição colaborativa em tempo real (baseada em CRDT), compartilhamento de projetos via URLs únicas e integração profunda com GitHub Actions para testes automatizados."
+        {
+          title: "Outros fabricantes",
+          status: "Planejado",
+          desc: "Uma ferramenta para aprender em mais de uma marca.",
+          details: "Uma tabela de compatibilidade relacionando cada instrução às equivalentes de outros fabricantes e, em seguida, tipos de controlador dentro do app, avançando em etapas até os padrões internacionais."
         },
-        { 
-          title: "Hardware Integração", 
-          status: "Futuro", 
-          desc: "Implementação direta em CLPs físicos e protocolos industriais.",
-          details: "Pesquisando drivers EtherNet/IP e Modbus TCP para comunicação direta com hardware físico. O objetivo é exportar a lógica compilada para formatos padrão da indústria."
+        {
+          title: "Código aberto e tutoriais",
+          status: "Planejado",
+          desc: "Abrir o código e ensinar com ele.",
+          details: "Publicar o código-fonte quando o projeto atingir uma versão estável, junto com tutoriais passo a passo e vídeos baseados nos exemplos."
         }
       ]
     }
   }
 };
+
+const DOCS_URL = "https://docs.openladder.app";
+
+// Diagrama estático de uma linha com selo, desenhado em SVG para não depender de imagem externa.
+const SealInDiagram = ({ label }: { label: string }) => (
+  <svg viewBox="0 0 400 400" role="img" aria-label={label} className="w-full h-full text-text-secondary">
+    <g fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
+      <line x1="40" y1="60" x2="40" y2="340" />
+      <line x1="360" y1="60" x2="360" y2="340" />
+      <line x1="40" y1="150" x2="95" y2="150" />
+      <line x1="95" y1="130" x2="95" y2="170" />
+      <line x1="115" y1="130" x2="115" y2="170" />
+      <line x1="115" y1="150" x2="195" y2="150" />
+      <line x1="195" y1="130" x2="195" y2="170" />
+      <line x1="215" y1="130" x2="215" y2="170" />
+      <line x1="192" y1="172" x2="218" y2="128" />
+      <line x1="215" y1="150" x2="290" y2="150" />
+      <line x1="322" y1="150" x2="360" y2="150" />
+      <line x1="65" y1="150" x2="65" y2="240" />
+      <line x1="65" y1="240" x2="95" y2="240" />
+      <line x1="95" y1="220" x2="95" y2="260" />
+      <line x1="115" y1="220" x2="115" y2="260" />
+      <line x1="115" y1="240" x2="155" y2="240" />
+      <line x1="155" y1="240" x2="155" y2="150" />
+    </g>
+    <circle cx="306" cy="150" r="16" fill="none" strokeWidth="3" className="stroke-accent" />
+    <g className="fill-current font-mono" fontSize="13" textAnchor="middle">
+      <text x="105" y="118">Cmd_Start</text>
+      <text x="205" y="118">Cmd_Stop</text>
+      <text x="306" y="118" className="fill-accent">Out_Motor</text>
+      <text x="105" y="282">Out_Motor</text>
+    </g>
+    <text x="200" y="340" textAnchor="middle" fontSize="13" className="fill-current opacity-70">{label}</text>
+  </svg>
+);
 
 const FloatingCard = ({ children, className = "", delay = 0, rotate = 0 }: { children: React.ReactNode, className?: string, delay?: number, rotate?: number }) => (
   <motion.div
@@ -348,9 +398,11 @@ const ProjectShowcase = ({ lang }: { lang: Language }) => {
 export default function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
-  const [lang, setLang] = useState<Language>('en');
+  const [lang, setLang] = useState<Language>(() =>
+    typeof navigator !== 'undefined' && navigator.language?.toLowerCase().startsWith('pt') ? 'pt' : 'en'
+  );
   const [activeSection, setActiveSection] = useState<string>("");
-  const [selectedPhase, setSelectedPhase] = useState<number>(0);
+  const [selectedPhase, setSelectedPhase] = useState<number>(1);
 
   const t = translations[lang];
 
@@ -414,7 +466,7 @@ export default function LandingPage() {
     { id: "features", label: t.nav.features },
     { id: "showcase", label: t.nav.showcase },
     { id: "how-it-works", label: t.nav.howItWorks },
-    { id: "roadmap", label: t.nav.roadmap || (lang === 'en' ? 'Roadmap' : 'Roadmap') }
+    { id: "roadmap", label: t.nav.roadmap }
   ];
 
   return (
@@ -607,8 +659,8 @@ export default function LandingPage() {
                       {t.hero.ctaStart}
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </a>
-                    <a href="https://github.com/OpenLadder-App" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto bg-industrial-900 hover:bg-industrial-800 text-text-primary border border-industrial-800 px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2">
-                      <Github className="w-5 h-5" />
+                    <a href={DOCS_URL} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto bg-industrial-900 hover:bg-industrial-800 text-text-primary border border-industrial-800 px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2">
+                      <BookOpen className="w-5 h-5" />
                       {t.hero.ctaExamples}
                     </a>
                   </div>
@@ -632,8 +684,9 @@ export default function LandingPage() {
               { icon: Cpu, title: t.features.items[0].title, desc: t.features.items[0].desc, span: "md:col-span-2" },
               { icon: Play, title: t.features.items[1].title, desc: t.features.items[1].desc },
               { icon: Box, title: t.features.items[2].title, desc: t.features.items[2].desc },
-              { icon: GitBranch, title: t.features.items[3].title, desc: t.features.items[3].desc },
-              { icon: Palette, title: t.features.items[4].title, desc: t.features.items[4].desc, span: "md:col-span-2" }
+              { icon: GitBranch, title: t.features.items[3].title, desc: t.features.items[3].desc, span: "md:col-span-2" },
+              { icon: FileText, title: t.features.items[4].title, desc: t.features.items[4].desc, span: "md:col-span-2" },
+              { icon: Languages, title: t.features.items[5].title, desc: t.features.items[5].desc }
             ].map((feature, i) => (
               <FeatureCard 
                 key={i}
@@ -674,17 +727,13 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-square rounded-3xl bg-industrial-900 border border-industrial-800 overflow-hidden shadow-2xl">
-                <img 
-                  src="https://picsum.photos/seed/industrial/800/800" 
-                  alt="Industrial Automation" 
-                  className="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-700"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-industrial-950 via-transparent to-transparent" />
+              <div className="relative aspect-square rounded-3xl bg-industrial-900 border border-industrial-800 overflow-hidden shadow-2xl">
+                <div className="absolute inset-0 p-6">
+                  <SealInDiagram label={t.howItWorks.diagramLabel} />
+                </div>
               </div>
               {/* Floating Badge */}
-              <div className="absolute -bottom-6 -left-6 p-6 rounded-2xl bg-accent text-industrial-950 shadow-xl max-w-[200px]">
+              <div className="absolute -bottom-6 -left-6 p-6 rounded-2xl bg-accent text-industrial-950 shadow-xl max-w-[240px]">
                 <p className="text-sm font-bold leading-tight">{t.howItWorks.badge}</p>
               </div>
             </div>
@@ -719,7 +768,7 @@ export default function LandingPage() {
                 >
                   <div className="flex items-center justify-between mb-2">
                     <div className={`font-mono text-xs ${selectedPhase === i ? "text-accent" : "text-slate-500"}`}>
-                      Phase 0{i + 1}
+                      {t.roadmap.phaseLabel} 0{i + 1}
                     </div>
                     <div className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
                       selectedPhase === i ? "bg-accent text-industrial-950" : "bg-industrial-800 text-accent"
@@ -742,7 +791,7 @@ export default function LandingPage() {
                 animate={{ opacity: 1, y: 0 }}
                 className="bg-industrial-900 border border-industrial-800 p-8 lg:p-12 rounded-[32px] shadow-2xl sticky top-24"
               >
-                <div className="text-accent font-mono text-sm mb-2">Phase 0{selectedPhase + 1}</div>
+                <div className="text-accent font-mono text-sm mb-2">{t.roadmap.phaseLabel} 0{selectedPhase + 1}</div>
                 <h3 className="text-3xl lg:text-4xl font-bold text-text-primary mb-4">{t.roadmap.phases[selectedPhase].title}</h3>
                 <div className="inline-block px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-[10px] font-bold uppercase tracking-wider text-accent mb-8">
                   {t.roadmap.phases[selectedPhase].status}
@@ -754,7 +803,7 @@ export default function LandingPage() {
                   </p>
                   <div className="p-8 rounded-2xl bg-industrial-950/50 border border-industrial-800">
                     <h4 className="text-sm font-bold text-accent uppercase tracking-widest mb-4">
-                      {lang === 'en' ? 'Detailed Scope' : 'Escopo Detalhado'}
+                      {t.roadmap.scopeLabel}
                     </h4>
                     <p className="text-text-secondary leading-relaxed text-lg">
                       {t.roadmap.phases[selectedPhase].details}
@@ -775,7 +824,7 @@ export default function LandingPage() {
             <a href="https://editor.openladder.app" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all shadow-lg shadow-accent/20">
               {t.cta.start}
             </a>
-            <a href="https://github.com/OpenLadder-App" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto bg-transparent hover:bg-text-primary/5 text-text-primary border border-text-primary/20 px-10 py-5 rounded-2xl font-bold text-xl transition-all">
+            <a href={DOCS_URL} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto bg-transparent hover:bg-text-primary/5 text-text-primary border border-text-primary/20 px-10 py-5 rounded-2xl font-bold text-xl transition-all">
               {t.cta.repos}
             </a>
           </div>
@@ -785,7 +834,7 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="py-12 border-t border-industrial-800 bg-industrial-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-12">
             <div className="col-span-2">
               <Logo withText className="h-8 mb-6" />
               <p className="text-slate-500 max-w-xs mb-6">
@@ -793,34 +842,22 @@ export default function LandingPage() {
               </p>
               <div className="flex gap-4">
                 <a href="https://github.com/OpenLadder-App" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white transition-colors"><Github className="w-6 h-6" /></a>
-                <a href="#" className="text-slate-500 hover:text-white transition-colors">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
-                </a>
               </div>
             </div>
             <div>
               <h6 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">{t.footer.product}</h6>
               <ul className="space-y-4 text-sm text-slate-500">
                 <li><a href="https://editor.openladder.app" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">Editor</a></li>
-                <li><a href="#features" className="hover:text-accent transition-colors">Simulator</a></li>
-                <li><a href="#features" className="hover:text-accent transition-colors">Themes</a></li>
+                <li><a href="#showcase" className="hover:text-accent transition-colors">{t.footer.simulator}</a></li>
+                <li><a href="#roadmap" className="hover:text-accent transition-colors">{t.nav.roadmap}</a></li>
               </ul>
             </div>
             <div>
               <h6 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">{t.footer.resources}</h6>
               <ul className="space-y-4 text-sm text-slate-500">
-                <li><a href="https://github.com/OpenLadder-App" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">Documentation</a></li>
-                <li><a href="https://github.com/OpenLadder-App" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">Examples</a></li>
-                <li><a href="https://github.com/OpenLadder-App" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">Community</a></li>
+                <li><a href={DOCS_URL} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">{t.footer.docs}</a></li>
+                <li><a href={`${DOCS_URL}${lang === 'en' ? '/en' : ''}/referencia/instrucoes/`} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">{t.footer.instructions}</a></li>
                 <li><a href="https://github.com/OpenLadder-App" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">GitHub</a></li>
-              </ul>
-            </div>
-            <div>
-              <h6 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">{t.footer.legal}</h6>
-              <ul className="space-y-4 text-sm text-slate-500">
-                <li><a href="#" className="hover:text-accent transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-accent transition-colors">Terms of Service</a></li>
-                <li><a href="#" className="hover:text-accent transition-colors">Cookie Policy</a></li>
               </ul>
             </div>
           </div>
